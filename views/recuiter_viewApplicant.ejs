@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Applicants</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">Job Portal</a>
+            <ul class="nav-links">
+                <li><a href="/recruiter/view-posted-jobs">Posted Jobs</a></li>
+                <li><a href="/recruiter/view-applicants">Applicants</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Job Applicants</h1>
+            <p>Review and manage applications for your job postings</p>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Application ID</th>
+                        <th>Job Title</th>
+                        <th>Candidate Name</th>
+                        <th>Email</th>
+                        <th>Application Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%products.forEach(products=>{%>
+            <tr>
+                <td><%=products.name%></td>
+                <td><%=products.category%></td>
+                <td><%=products.price%></td>
+                <td><%=products.stock%></td>
+                <td><%=products.rating%></td>
+                 <td>
+                            <button class="btn-small btn-view">View</button>
+                            <button class="btn-small btn-edit">Accept</button>
+                        </td>
+            </tr>
+        <%})%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

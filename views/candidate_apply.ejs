@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apply for Job</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">Job Portal</a>
+            <ul class="nav-links">
+                <li><a href="/candidate/view-jobs">View Jobs</a></li>
+                <li><a href="/candidate/applied-jobs">Applied Jobs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Apply for Job</h1>
+            <p>Submit your application for the desired position</p>
+        </div>
+
+        <div class="form-container">
+            <form method="POST" action="/candidate/apply-job">
+                <div class="form-group">
+                    <label for="job_id">Select Job</label>
+                    <select id="job_id" name="job_id" required>
+                        <option value="">Choose a job...</option>
+                        <option value="1">Software Engineer - ABC Corp</option>
+                        <option value="2">Data Analyst - XYZ Inc</option>
+                        <option value="3">Full Stack Developer - Tech Solutions</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="candidate_id">Candidate ID</label>
+                    <input type="text" id="candidate_id" name="candidate_id" placeholder="Enter your candidate ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cover_letter">Cover Letter</label>
+                    <textarea id="cover_letter" name="cover_letter" placeholder="Tell us why you're a great fit for this role" required></textarea>
+                </div>
+
+                <button type="submit">Submit Application</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

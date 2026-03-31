@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Posted Jobs</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">Job Portal</a>
+            <ul class="nav-links">
+                <li><a href="/8">Post Job</a></li>
+                <li><a href="/9">Posted Jobs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Your Posted Jobs</h1>
+            <p>Manage and track your job postings</p>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Title</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <%data.forEach(data=>{%>
+                    <tr>
+                        <td><%=data._id%></td>
+                        <td><%=data.title%></td>
+                        <td><%=data.company%></td>
+                        <td><%=data.location%></td>
+                        <td><%=data.description%></td>
+                        <td>
+                            <button class="btn-small btn-edit">Edit</button>
+                            <button class="btn-small btn-delete">Delete</button>
+                        </td>
+                    </tr>
+                    <%})%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
