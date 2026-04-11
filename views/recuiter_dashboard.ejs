@@ -575,9 +575,9 @@
             <div class="user-menu">
                 <div class="user-info">
                     <div class="user-avatar">👤</div>
-                    <span>Admin Recruiter</span>
+                    <span><%=name%> Recruiter</span>
                 </div>
-                <button class="logout-btn">Logout</button>
+                <a href="/" class="logout-btn">Logout</a>
             </div>
         </div>
     </nav>
@@ -586,7 +586,7 @@
     <div class="dashboard-container">
         <!-- Welcome Section -->
         <div class="welcome-section">
-            <h1>Welcome back, Admin! 👋</h1>
+            <h1>Welcome back, <%=name%>! 👋</h1>
             <p>Manage your job postings, review applicants, and find the perfect candidates for your company.</p>
         </div>
 
@@ -624,61 +624,27 @@
                     <tr>
                         <th>Job Title</th>
                         <th>Location</th>
-                        <th>Posted Date</th>
-                        <th>Applicants</th>
-                        <th>Status</th>
+                        <th>Salary</th>
+                        <!-- <th>Applicants</th> -->
+                        <!-- <th>Status</th> -->
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <%job.forEach(job=>{%>
                     <tr>
-                        <td class="job-title-cell">Senior Software Engineer</td>
-                        <td>San Francisco, CA</td>
-                        <td>2026-03-20</td>
-                        <td><span class="applicant-count">24</span></td>
-                        <td><span class="job-status status-active">Active</span></td>
+                        <td class="job-title-cell"><%=job.title%></td>
+                        <td><%=job.location%></td>
+                        <td><%=job.salary%></td>
+                        <!-- <td><span class="applicant-count"></span></td> -->
+                        <!-- <td><span class="job-status status-active">Active</span></td> -->
                         <td>
-                            <button class="action-btn view-btn">View</button>
-                            <button class="action-btn edit-btn">Edit</button>
-                            <button class="action-btn delete-btn">Delete</button>
+                            <a href="/viewpostedJob/<%=job._id%>" class="action-btn view-btn">View</a>
+                            <a class="action-btn edit-btn">Edit</a>
+                            <a class="action-btn delete-btn">Delete</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="job-title-cell">Full Stack Developer</td>
-                        <td>Remote</td>
-                        <td>2026-03-18</td>
-                        <td><span class="applicant-count">18</span></td>
-                        <td><span class="job-status status-active">Active</span></td>
-                        <td>
-                            <button class="action-btn view-btn">View</button>
-                            <button class="action-btn edit-btn">Edit</button>
-                            <button class="action-btn delete-btn">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="job-title-cell">Data Scientist</td>
-                        <td>New York, NY</td>
-                        <td>2026-03-15</td>
-                        <td><span class="applicant-count">32</span></td>
-                        <td><span class="job-status status-active">Active</span></td>
-                        <td>
-                            <button class="action-btn view-btn">View</button>
-                            <button class="action-btn edit-btn">Edit</button>
-                            <button class="action-btn delete-btn">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="job-title-cell">DevOps Engineer</td>
-                        <td>Boston, MA</td>
-                        <td>2026-03-10</td>
-                        <td><span class="applicant-count">15</span></td>
-                        <td><span class="job-status status-closed">Closed</span></td>
-                        <td>
-                            <button class="action-btn view-btn">View</button>
-                            <button class="action-btn edit-btn">Edit</button>
-                            <button class="action-btn delete-btn">Delete</button>
-                        </td>
-                    </tr>
+                    <%})%>
                 </tbody>
             </table>
         </div>

@@ -109,6 +109,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
+            text-decoration: none;
         }
 
         .logout-btn:hover {
@@ -343,6 +344,7 @@
             font-size: 12px;
             font-weight: 600;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .apply-btn {
@@ -555,6 +557,9 @@
             .job-action-btn {
                 flex: 1;
             }
+            a{
+                text-decoration: none;
+            }
         }
     </style>
 </head>
@@ -569,18 +574,18 @@
                         <span>📊</span> Dashboard
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="/candidate/view-jobs" class="nav-link">
                         <span>💼</span> Find Jobs
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
-                    <a href="/candidate/applied-jobs" class="nav-link">
+                    <a href="/3" class="nav-link">
                         <span>📝</span> My Applications
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/candidate/saved-jobs" class="nav-link">
+                    <a href="savedJobs" class="nav-link">
                         <span>❤️</span> Saved Jobs
                     </a>
                 </li>
@@ -593,9 +598,9 @@
             <div class="user-menu">
                 <div class="user-info">
                     <div class="user-avatar">👤</div>
-                    <span>John Doe</span>
+                    <span><%=name%></span>
                 </div>
-                <button class="logout-btn">Logout</button>
+                <a href="/" class="logout-btn">Logout</a>
             </div>
         </div>
     </nav>
@@ -604,7 +609,7 @@
     <div class="dashboard-container">
         <!-- Welcome Section -->
         <div class="welcome-section">
-            <h1>Welcome back, John! 👋</h1>
+            <h1>Welcome back, <%=name%> 👋</h1>
             <p>Let's find you the perfect opportunity. Check out the latest jobs and manage your applications.</p>
         </div>
 
@@ -612,17 +617,17 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-card-icon">📋</div>
-                <div class="stat-card-value">8</div>
+                <div class="stat-card-value"><%=applyed%></div>
                 <div class="stat-card-label">Applications Sent</div>
             </div>
-            <div class="stat-card viewed">
+            <!-- <div class="stat-card viewed">
                 <div class="stat-card-icon">👁️</div>
                 <div class="stat-card-value">24</div>
                 <div class="stat-card-label">Jobs Viewed</div>
-            </div>
+            </div> -->
             <div class="stat-card saved">
                 <div class="stat-card-icon">💾</div>
-                <div class="stat-card-value">5</div>
+                <div class="stat-card-value"><%=save%></div>
                 <div class="stat-card-label">Jobs Saved</div>
             </div>
         </div>
@@ -632,8 +637,10 @@
             <div class="content-header">
                 <h2>📌 Featured Job Opportunities</h2>
                 <div class="search-filter">
-                    <input type="text" class="search-input" placeholder="Search jobs...">
+                    <form action="/filter" method="post">
+                    <input type="text" class="search-input" placeholder="Search jobs... "name="title">
                     <button class="filter-btn">Filter</button>
+                    </form>
                 </div>
             </div>
 
@@ -659,9 +666,10 @@
                                 <div class="job-card-actions">
                                     <form method="POST" action="/candidate/apply-job" style="display: inline;">
                                         <input type="hidden" name="job_id" value="<%= job.id %>">
-                                        <button type="submit" class="job-action-btn apply-btn">Apply Now</button>
+                                        <a href="/applyforjob/<%=job._id%>" type="submit" class="job-action-btn apply-btn">Apply Now</a>
+                                        <a href="/savejob/<%=job._id%>" class="job-action-btn save-btn">Save</a>
                                     </form>
-                                    <button class="job-action-btn save-btn">Save</button>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -684,42 +692,29 @@
 
             <table class="dashboard-table">
                 <thead>
+                    
                     <tr>
                         <th>Job Title</th>
                         <th>Company</th>
                         <th>Applied Date</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
+                    <%apply.forEach(data=>{%>
                     <tr>
-                        <td>Backend Developer</td>
-                        <td>ABC Corp</td>
-                        <td>2026-03-25</td>
-                        <td><span class="status-badge status-approved">Approved</span></td>
+                        <td><%=data.title%></td>
+                        <td><%=data.company%></td>
+                        <td><%=data.appliedAt%></td>
+                        <td><%=data.status%></td>
+                        <!-- <td><span class="status-badge status-approved">Approved</span></td>
                         <td>
                             <button class="action-btn view-btn">View Details</button>
-                        </td>
+                        </td> -->
                     </tr>
-                    <tr>
-                        <td>Frontend Developer</td>
-                        <td>Tech Solutions</td>
-                        <td>2026-03-22</td>
-                        <td><span class="status-badge status-under-review">Under Review</span></td>
-                        <td>
-                            <button class="action-btn view-btn">View Details</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>DevOps Engineer</td>
-                        <td>CloudTech Inc</td>
-                        <td>2026-03-20</td>
-                        <td><span class="status-badge status-pending">Pending</span></td>
-                        <td>
-                            <button class="action-btn view-btn">View Details</button>
-                        </td>
-                    </tr>
+                    <%})%>
+                   
                 </tbody>
             </table>
         </div>

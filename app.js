@@ -1,8 +1,24 @@
 import express from 'express'
 const app=express();
+import helmet from "helmet";
+import session from "express-session";
+app.use(session({
+  secret: 'my_super_secret_development_key',
+  resave: false,
+  saveUninitialized: false,
+   cookie: { 
+    maxAge: 30 * 60 * 1000  // 30 minutes in milliseconds
+  }
+}));
+
+//helmet security lagane ke liye middleware
+app.use(helmet());
+import bcrypt from 'bcrypt';
 import path from 'path'
-import { MongoClient } from 'mongodb';
-import { json } from 'stream/consumers';
+import { MongoClient,ObjectId, } from 'mongodb';
+import { json } from 'stream/consumers'; 
+import { getJobs, postJob ,cDashboard,Rdashboard,view,apply,saveJob,aplyed,savedJobs,profile,CandidateUpdate,filter} from './controllers/jobController.js';
+import {candidateLogin,c_register,recruiterRegister,recruiterLogin} from './src/auth.js';
 const dbName="demo"
 const ab=path.resolve('public')
 app.use(express.static(ab))
@@ -13,66 +29,53 @@ app.use(express.json())
 const client=new MongoClient(url)
 client.connect().then((connection)=>{
 const db=connection.db(dbName);
+app.locals.db = db;
 app.get("/",(req,resp)=>{
     resp.render("index")
 })
-app.get("/1",(req,resp)=>{
-    resp.render('candidate_apply')
+//profile show karane ke liye hai ye route
+app.get("/candidate/profile",profile)
+//ye candidate ki information ko update karne ke liye 
+app.post("/candidate/update",CandidateUpdate)
+app.get("/recruiter/register",(req,resp)=>{
+    resp.render('recuiter_register')
 })
 app.get("/candidate/register",(req,resp)=>{
-    resp.render('candidate_register.ejs')
+    resp.render("candidate_register")
 })
-app.get("/3",(req,resp)=>{
-    resp.render('candidate_viewJobs.ejs')
-})
+//applyed jobs ko check karna dashboard se
+app.get("/3",aplyed);
+//saved jobs ko check karne ke liye
+app.get("/savedJobs",savedJobs);
 app.get("/candidate/login",(req,resp)=>{
     resp.render('candidateLogin.ejs')
 })
-app.get("/5",(req,resp)=>{
-    resp.render('cnadidate_applied.ejs')
-})
-app.get("/6",(req,resp)=>{
-    resp.render('login.ejs')
+app.get("/candidate/applied-jobs",(req,resp)=>{
+    resp.render('cnadidate_applied')
 })
 app.get("/recruiter/login",(req,resp)=>{
-    resp.render('recuiter_login.ejs')
+    resp.render('recuiter_login')
 })
-app.get("/8",(req,resp)=>{
+app.get("/recruiter/post-job",(req,resp)=>{
     resp.render('recuiter_postJob')
 })
-app.get("/9",async(req,resp)=>{
-    const collection=db.collection("posetdJob")
-    const data=await collection.find().toArray();
-    resp.render('recuiter_postedJob.ejs',{data})
+app.get('/candidate/view-jobs', getJobs);
+app.post("/recruiter/post-job",postJob)
+app.get("/recruiter/view-applicants",async(req,resp)=>{
+const collection=db.collection("products")
+const products= await collection.find().toArray()
+resp.render('recuiter_viewApplicant',{products})
 })
-app.post("/recruiter/post-job",async(req,resp)=>{
-    const collection=db.collection("posetdJob")
-    const result=await collection.insertOne(req.body)
-    console.log(JSON.stringify(result,null,2))
-    resp.send("data is added")
+app.post("/recruiter/login1",recruiterLogin,Rdashboard)
+//recruiter login ke liye hai ye
+app.post("/12",candidateLogin)
+app.post("/filter",filter)//filter karne ke liye jobs ko
+app.get("/dashboard",cDashboard)
+app.post("/recruiter/register1",recruiterRegister)
+app.post("/candidate/register",c_register)
+app.get("/viewpostedJob/:id",view)
+//job apply karne ke liye route
+app.get("/applyforjob/:id",apply)
 })
-app.get("/recruiter/register",(req,resp)=>{
-    resp.render('recuiter_register.ejs')
-})
-app.get("/11",async(req,resp)=>{
-    const collection=db.collection("products")
-    const products= await collection.find().toArray()
-
-    resp.render('recuiter_viewApplicant.ejs',{products})
-})
-app.get("/12",async(req,resp)=>{
-    const collection=db.collection("posetdJob")
-    const jobs=await collection.find().toArray();
-    resp.render("candidate_dashboard",{jobs})
-   
-})
-app.get("/13",(req,resp)=>{
-    resp.render("recuiter_dashboard")
-})
-app.post("/candidate/register",async(req,resp)=>{
-     const collection=db.collection("candidates")
-     const result=await collection.insertOne(req.body)
-     resp.render("index")
-})
-})
+app.get("/savejob/:id",saveJob)
 app.listen(3200)
