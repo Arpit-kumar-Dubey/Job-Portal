@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Jobs</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">Job Portal</a>
+            <ul class="nav-links">
+                <li><a href="/dashboard">Exit</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="page-header">
+            <h1>Your Saved Jobs</h1>
+            <p>Browse and apply for exciting job opportunities</p>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Title</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>salary</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <%data.forEach(data=>{%>
+                    <tr>
+                        <td><%=data._id%></td>
+                        <td><%=data.title%></td>
+                        <td><%=data.company%></td>
+                        <td><%=data.location%></td>
+                        <td><%=data.description%></td>
+                        <td><%=data.salary%></td>
+                        <td><a class="delete" href="/deleteSaved/<%=data._id%>">Delete</a></td>
+                    </tr>
+                    <%})%>
+                  
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
