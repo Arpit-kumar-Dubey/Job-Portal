@@ -1,5 +1,6 @@
+
 import mongoose from "mongoose";
-const PostedSchema = new mongoose.Schema({
+const SavedSchema = new mongoose.Schema({
 title:String,
 company:String,
 location:String,
@@ -8,7 +9,7 @@ salary:String,
 candidate:String,
 jobId:String,
 status:String,
-RecruiterId:String
+name:String
 
 });
-export default mongoose.model("posetdJob", PostedSchema);
+export default mongoose.model("saveJob", SavedSchema);
