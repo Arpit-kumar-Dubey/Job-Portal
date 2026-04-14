@@ -90,5 +90,8 @@ app.get("/recruiter/view-posted-jobs",viewPosted)
 app.get("/recruiter/register",(req,resp)=>{
     resp.render('recuiter_register')
 })
+const PORT = process.env.PORT || 3100;
 
-app.listen(3100)
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
