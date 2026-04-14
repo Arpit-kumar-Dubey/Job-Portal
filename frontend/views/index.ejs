@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Portal System - Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Home Page Specific Styles */
+        .home-navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .home-navbar .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .home-navbar .navbar-brand {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .home-navbar .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .home-navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-navbar .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .hero-btn-candidate {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .hero-btn-candidate:hover {
+            background-color: #229954;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(39, 174, 96, 0.3);
+        }
+
+        .hero-btn-recruiter {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .hero-btn-recruiter:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Features Section */
+        .features-section {
+            background-color: #f8f9fa;
+            padding: 80px 20px;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 60px;
+            font-weight: bold;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Login Options Section */
+        .login-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 20px;
+            color: white;
+        }
+
+        .login-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .login-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            font-weight: bold;
+        }
+
+        .login-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .login-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .login-card:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .login-card-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .login-card h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .login-card p {
+            font-size: 14px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .login-card-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .login-card-btn {
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .candidate-login-btn {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .candidate-login-btn:hover {
+            background-color: #229954;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .candidate-register-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .candidate-register-btn:hover {
+            background-color: white;
+            color: #27ae60;
+        }
+
+        .recruiter-login-btn {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .recruiter-login-btn:hover {
+            background-color: #2980b9;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .recruiter-register-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .recruiter-register-btn:hover {
+            background-color: white;
+            color: #3498db;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: white;
+            padding: 80px 20px;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .about-content p {
+            color: #7f8c8d;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 48px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 32px;
+            }
+
+            .hero-section p {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-btn {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .login-options {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .home-navbar .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="home-navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">🚀 Job Portal</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#login">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>Find Your Dream Job or Hire Top Talent</h1>
+        <p>Connect with opportunities and build your future. Whether you're seeking a job or looking for the right candidate, we're here to help.</p>
+        <div class="hero-buttons">
+            <a href="#login" class="hero-btn hero-btn-candidate">👨‍💼 I'm Looking for a Job</a>
+            <a href="#login" class="hero-btn hero-btn-recruiter">👔 I'm Hiring</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="features-container">
+            <h2 class="section-title">Why Choose Our Job Portal?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Easy Job Search</h3>
+                    <p>Browse thousands of job listings and find positions that match your skills and experience.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Simple Application</h3>
+                    <p>Apply to jobs in seconds with your profile. Track all your applications in one place.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>Post Opportunities</h3>
+                    <p>Post job listings quickly and reach qualified candidates instantly.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Talent Management</h3>
+                    <p>Review applications, manage candidates, and make informed hiring decisions.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Secure & Reliable</h3>
+                    <p>Your data is protected with industry-standard security measures.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast & Efficient</h3>
+                    <p>Get connected with the right people quickly and efficiently.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>About Our Platform</h2>
+                <p>Job Portal is a comprehensive online employment platform designed to connect job seekers with employers. We believe in creating opportunities for everyone.</p>
+                <p>Our mission is to simplify the hiring and job search process by providing a user-friendly platform where candidates can showcase their talents and employers can find the perfect fit.</p>
+                <p>With our advanced matching algorithms and intuitive interface, we help bridge the gap between talent and opportunity.</p>
+            </div>
+            <div class="about-image">
+                <span>💡</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>10K+</h3>
+                <p>Active Users</p>
+            </div>
+            <div class="stat-item">
+                <h3>5K+</h3>
+                <p>Job Listings</p>
+            </div>
+            <div class="stat-item">
+                <h3>1K+</h3>
+                <p>Companies</p>
+            </div>
+            <div class="stat-item">
+                <h3>95%</h3>
+                <p>Success Rate</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Options Section -->
+    <section class="login-section" id="login">
+        <div class="login-container">
+            <h2 class="login-title">Get Started Today</h2>
+            <div class="login-options">
+                <!-- Candidate Login Card -->
+                <div class="login-card">
+                    <div class="login-card-icon">👨‍💻</div>
+                    <h2>For Job Seekers</h2>
+                    <p>Find your perfect job. Explore thousands of opportunities from top companies and take your career to the next level.</p>
+                    <div class="login-card-buttons">
+                        <a href="/candidate/login" class="login-card-btn candidate-login-btn">Login</a>
+                        <a href="/candidate/register" class="login-card-btn candidate-register-btn">Create Account</a>
+                    </div>
+                </div>
+
+                <!-- Recruiter Login Card -->
+                <div class="login-card">
+                    <div class="login-card-icon">💼</div>
+                    <h2>For Recruiters</h2>
+                    <p>Post job openings and connect with talented professionals. Build your dream team and grow your company faster.</p>
+                    <div class="login-card-buttons">
+                        <a href="/recruiter/login" class="login-card-btn recruiter-login-btn">Login</a>
+                        <a href="/recruiter/register" class="login-card-btn recruiter-register-btn">Create Account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Contact</a>
+                <a href="#">Blog</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Job Portal System. All rights reserved. | Built with ❤️ for Developers</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
