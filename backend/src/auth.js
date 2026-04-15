@@ -6,10 +6,10 @@ export const recruiterLogin=async(req,resp)=>{
         const{email,password}=req.body
         const user= await Recruiter.findOne({email:email})
          if (!user){
-            resp.send("Email not found");
+           return resp.redirect("/recruiter/login?error=Invalid password or Email");
         }
         if(!await bcrypt.compare(password,user.password)){
-          resp.send("Invalid password or email")
+          return resp.redirect("/recruiter/login?error=Invalid password or Email");
         }else{
         req.session.Rid=user._id;
         req.session.email=email;
@@ -74,10 +74,10 @@ export const candidateLogin = async (req, res) => {
         const user = await Candidate.findOne({ email: email });
 
         if (!user) {
-            return res.send("email not found");
+              return res.redirect("/candidate/login?error=Invalid password or Email");
         }
         if (!await bcrypt.compare(password,user.password)){
-            return res.send("Invalid password");
+             return res.redirect("/candidate/login?error=Invalid password or Email");
         }
         req.session.userId=email;
         req.session.candidateId=user._id;
