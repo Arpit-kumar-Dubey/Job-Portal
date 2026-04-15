@@ -8,7 +8,8 @@ salary:String,
 candidate:String,
 jobId:String,
 status:String,
-RecruiterId:String
+RecruiterId:String,
+postedDate:String
 
 });
 export default mongoose.model("posetdJob", PostedSchema);
