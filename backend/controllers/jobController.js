@@ -4,7 +4,7 @@ import PostedJob from '../models/postedModel.js';
 import Recruiter from '../models/recruiterModel.js';
 import SavedJob from '../models/savedModel.js';
 
-// 1. Get Jobs (postedJob collection)
+// 1. Get Jobs 
 export const getJobs = async (req, res) => {
     try {
         const data = await PostedJob.find();
@@ -15,7 +15,7 @@ export const getJobs = async (req, res) => {
     }
 };
 
-// 2. Post Job (posetdJob collection - spelled as per your code)
+// 2. Post Job 
 export const postJob = async (req, res) => {
     try {
         if (!req.session.email) {
@@ -137,10 +137,8 @@ export const viewPosted = async (req, resp) => {
             `);
         }
 
-        console.log("Recruiter Email:", email);
-        console.log("Jobs Found:", data.length);
+        
 
-        // 4. Render the page
         resp.render("recuiter_postedJob", { data: data });
 
     } catch (error) {
@@ -148,7 +146,7 @@ export const viewPosted = async (req, resp) => {
         resp.send("internal problem in your viewPosted code");
     }
 };
-// 4. Applied Jobs (applyJob collection)
+// 4. Applied Jobs 
 export const aplyed = async (req, resp) => {
     const email = req.session.userId;
     const data = await AppliedJob.find({ candidate: email });
@@ -156,7 +154,7 @@ export const aplyed = async (req, resp) => {
     resp.render("candidate_viewJobs", { data });
 };
 
-// 5. Candidate Profile (candidates collection)
+// 5. Candidate Profile 
 export const profile = async (req, resp) => {
     try {
         const email = req.session.userId;
