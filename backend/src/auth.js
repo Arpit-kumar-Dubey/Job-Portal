@@ -36,7 +36,7 @@ export const recruiterRegister=async(req,resp)=>{
         const result=await Recruiter.create(newUser)
         resp.render('index')
         }else{
-            return resp.json({message: "User already exists" });
+           return resp.redirect("/recruiter/register1?error=User Already Exist");
         }
         
         
@@ -58,7 +58,7 @@ export const c_register=async(req,resp)=>{
         const result=await Candidate.create(newuser)
         resp.render("index")
         }else{
-           return resp.json({ message: "User already exists" });
+          return resp.redirect("/candidate/register?error=User Already Exist");
         }
         
 
