@@ -34,7 +34,9 @@ app.get("/",(req,resp)=>{
 app.get("/candidate/profile",profile)
 //ye candidate ki information ko update karne ke liye 
 app.post("/candidate/update",CandidateUpdate)
-
+app.get("/report",(req,resp)=>{
+  resp.render("report")
+})
 app.get("/candidate/register",(req,resp)=>{
     resp.render("candidate_register")
 })
