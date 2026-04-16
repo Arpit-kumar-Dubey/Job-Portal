@@ -1,1 +1,956 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal - Complete Technical Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar h1 {
+            font-size: 24px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section {
+            background: white;
+            margin: 20px 0;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 32px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #764ba2;
+            font-size: 22px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            color: #555;
+            font-size: 18px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .highlight-box {
+            background: #e8f0fe;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature-card h4 {
+            margin-top: 0;
+            color: #667eea;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+        
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        table tr:hover {
+            background: #f9f9f9;
+        }
+        
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        
+        .route-item {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #764ba2;
+        }
+        
+        .method {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+            font-family: monospace;
+        }
+        
+        .method-get { background: #28a745; }
+        .method-post { background: #007bff; }
+        .method-put { background: #ffc107; color: black; }
+        
+        .model-schema {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #764ba2;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        
+        .flow-diagram {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-family: monospace;
+            white-space: pre;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .btn-container {
+            text-align: center;
+            margin: 30px 0;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status-active { background: #d4edda; color: #155724; }
+        .status-pending { background: #fff3cd; color: #856404; }
+        .status-warning { background: #f8d7da; color: #721c24; }
+        
+        .footer {
+            background: #333;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .toc {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .toc ol {
+            margin-left: 25px;
+        }
+        
+        .toc li {
+            margin: 8px 0;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .navbar {
+                position: relative;
+            }
+            .btn-container {
+                display: none;
+            }
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .tech-item {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .tech-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="navbar">
+        <div class="navbar-content">
+            <h1>🚀 Job Portal</h1>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#tech">Tech Stack</a></li>
+                <li><a href="#models">Database</a></li>
+                <li><a href="#routes">Routes</a></li>
+                <li><a href="#flow">Flow</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Executive Summary -->
+        <div class="section" id="overview">
+            <h2>📋 Executive Summary</h2>
+            
+            <p>
+                यह एक <strong>Full-Stack Job Portal</strong> application है जो <strong>EJS Template Engine</strong> के साथ बना है। 
+                यह platform candidates (job seekers) और recruiters (employers) को एक दूसरे से connect करता है।
+            </p>
+            
+            <div class="highlight-box">
+                <h3>🎯 Project Type: EJS Server-Side Rendering (SSR)</h3>
+                <ul>
+                    <li><strong>Frontend:</strong> EJS Templates (Server-rendered HTML)</li>
+                    <li><strong>Backend:</strong> Node.js + Express.js</li>
+                    <li><strong>Database:</strong> MongoDB (NoSQL)</li>
+                    <li><strong>Session Management:</strong> express-session</li>
+                    <li><strong>Authentication:</strong> bcrypt + Session-based</li>
+                </ul>
+            </div>
+            
+            <h3>✨ Key Features</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>👤 User Roles</h4>
+                    <p>Candidates और Recruiters के लिए अलग accounts</p>
+                </div>
+                <div class="feature-card">
+                    <h4>💼 Job Management</h4>
+                    <p>Jobs post करो, edit करो, delete करो</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📝 Applications</h4>
+                    <p>Jobs apply करो, status track करो</p>
+                </div>
+                <div class="feature-card">
+                    <h4>💾 Save Jobs</h4>
+                    <p>Future के लिए jobs को bookmark करो</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔍 Search & Filter</h4>
+                    <p>Job title से search और filter करो</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📊 Dashboard</h4>
+                    <p>Applications, posts और stats देखो</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technology Stack -->
+        <div class="section" id="tech">
+            <h2>🛠️ Technology Stack</h2>
+            
+            <h3>Dependencies (package.json)</h3>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <strong>Express.js</strong>
+                    <p>v5.2.1 - Web Framework</p>
+                </div>
+                <div class="tech-item">
+                    <strong>MongoDB</strong>
+                    <p>v7.1.1 - Database Driver</p>
+                </div>
+                <div class="tech-item">
+                    <strong>Mongoose</strong>
+                    <p>v9.4.1 - ODM (Object Data Modeling)</p>
+                </div>
+                <div class="tech-item">
+                    <strong>EJS</strong>
+                    <p>v5.0.1 - Template Engine</p>
+                </div>
+                <div class="tech-item">
+                    <strong>bcrypt</strong>
+                    <p>v6.0.0 - Password Hashing</p>
+                </div>
+                <div class="tech-item">
+                    <strong>express-session</strong>
+                    <p>v1.19.0 - Session Management</p>
+                </div>
+                <div class="tech-item">
+                    <strong>dotenv</strong>
+                    <p>v17.4.2 - Environment Variables</p>
+                </div>
+                <div class="tech-item">
+                    <strong>CORS</strong>
+                    <p>v2.8.6 - Cross-Origin Requests</p>
+                </div>
+                <div class="tech-item">
+                    <strong>Helmet</strong>
+                    <p>v8.1.0 - Security Headers</p>
+                </div>
+            </div>
+            
+            <h3>Application Structure</h3>
+            <div class="code-block">
+Job_Portal/
+├── backend/
+│   ├── config/
+│   │   └── db.js                    (MongoDB Connection)
+│   ├── models/
+│   │   ├── candidateModel.js        (Job Seeker Schema)
+│   │   ├── recruiterModel.js        (Employer Schema)
+│   │   ├── postedModel.js           (Job Posting Schema)
+│   │   ├── ApplyModel.js            (Application Schema)
+│   │   └── savedModel.js            (Saved Jobs Schema)
+│   ├── controllers/
+│   │   └── jobController.js         (All Business Logic)
+│   └── src/
+│       └── auth.js                  (Authentication Logic)
+├── frontend/
+│   ├── views/                       (EJS Templates)
+│   ├── public/
+│   │   ├── css/                     (Stylesheets)
+│   │   └── js/                      (Client-side JS)
+├── app.js                           (Main Server File)
+├── package.json                     (Dependencies)
+└── .env                             (Environment Variables)
+            </div>
+        </div>
+        
+        <!-- Database Models -->
+        <div class="section" id="models">
+            <h2>🗄️ Database Schema (Collections)</h2>
+            
+            <h3>1. Candidates Collection</h3>
+            <p>Job seekers का user data store करता है</p>
+            <div class="model-schema">
+{
+  email: String,
+  password: String (bcrypt hashed),
+  name: String,
+  skills: String,
+  degree: String,
+  field: String,
+  gradYear: String,
+  university: String,
+  location: String,
+  phone: String,
+  company: String,          // Current company
+  endDate: String,
+  expDescription: String,
+  jobTitle: String,         // Current job title
+  startDate: String
+}
+            </div>
+            
+            <h3>2. Recruiter Collection</h3>
+            <p>Employers/Recruiters का data store करता है</p>
+            <div class="model-schema">
+{
+  name: String,
+  email: String (unique),
+  password: String (bcrypt hashed)
+}
+            </div>
+            
+            <h3>3. Posted Jobs Collection</h3>
+            <p>Recruiters द्वारा post किए गए jobs</p>
+            <div class="model-schema">
+{
+  title: String,                    // Job title
+  company: String,
+  location: String,
+  description: String,              // Job description
+  salary: String,
+  candidate: String,
+  jobId: String,
+  status: String,
+  RecruiterId: String,              // Email of recruiter
+  postedDate: String                // YYYY-MM-DD format
+}
+            </div>
+            
+            <h3>4. Applied Jobs Collection</h3>
+            <p>Candidates द्वारा apply किए गए jobs</p>
+            <div class="model-schema">
+{
+  title: String,
+  company: String,
+  location: String,
+  description: String,
+  salary: String,
+  RecruiterId: String,              // Recruiter की email
+  candidate: String,                // Candidate की email
+  jobId: String,                    // Job का ID
+  status: String,                   // "pending", "Accepted", "Rejected"
+  name: String,                     // Candidate का naam
+  locationCandidate: String,        // Candidate ka location
+  appliedAt: String                 // Application date
+}
+            </div>
+            
+            <h3>5. Saved Jobs Collection</h3>
+            <p>Candidates द्वारा bookmark किए गए jobs</p>
+            <div class="model-schema">
+{
+  title: String,
+  company: String,
+  location: String,
+  description: String,
+  salary: String,
+  candidate: String,                // Candidate की email
+  jobId: String,
+  status: String,
+  name: String
+}
+            </div>
+        </div>
+        
+        <!-- Routes & Flow -->
+        <div class="section" id="routes">
+            <h2>🔗 API Routes & Pages</h2>
+            
+            <h3>🔐 Authentication Routes</h3>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> / 
+                <p>Home page / Landing page</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /candidate/register
+                <p>Candidate registration form दिखाओ</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-post">POST</span> /candidate/register
+                <p>Candidate को register करो (c_register)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /candidate/login
+                <p>Candidate login form दिखाओ</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-post">POST</span> /12
+                <p>Candidate को login करो (candidateLogin)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /recruiter/register
+                <p>Recruiter registration form दिखाओ</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-post">POST</span> /recruiter/register1
+                <p>Recruiter को register करो (recruiterRegister)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /recruiter/login
+                <p>Recruiter login form दिखाओ</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-post">POST</span> /recruiter/login1
+                <p>Recruiter को login करो (recruiterLogin)</p>
+            </div>
+            
+            <h3>👤 Candidate Routes</h3>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /dashboard
+                <p>Candidate dashboard (cDashboard) - सभी jobs देखो</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /candidate/view-jobs
+                <p>सभी available jobs देखो (getJobs)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-post">POST</span> /filter
+                <p>Jobs को title से filter करो</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /viewpostedJob/:id
+                <p>एक specific job का detail देखो (view)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /applyforjob/:id
+                <p>किसी job के लिए apply करो (apply)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /saveJob/:id
+                <p>Job को bookmark/save करो (saveJob)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /3
+                <p>Applied jobs देखो (aplyed)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /savedJobs
+                <p>Saved jobs देखो (savedJobs)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /candidate/profile
+                <p>अपनी profile देखो (profile)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-post">POST</span> /candidate/update
+                <p>Profile को update करो (CandidateUpdate)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /deleteAppled/:id
+                <p>एक application को delete करो (deleteApply)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /deleteSaved/:id
+                <p>एक saved job को delete करो (deleteSaved)</p>
+            </div>
+            
+            <h3>💼 Recruiter Routes</h3>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /Rdashboard
+                <p>Recruiter dashboard (Rdashboard) - statistics देखो</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /recruiter/post-job
+                <p>नई job post करने का form दिखाओ</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-post">POST</span> /recruiter/post-job
+                <p>नई job को database में save करो (postJob)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /recruiter/view-posted-jobs
+                <p>अपनी सभी posted jobs देखो (viewPosted)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /recruiter/view-applicants
+                <p>सभी applications देखो (Applicants)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /EditPostedJob/:id
+                <p>Job को edit करने का form दिखाओ (EditPostedJob)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-post">POST</span> /recruiter/updateJob
+                <p>Job को update करो (updateJob)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /deletePosted/:id
+                <p>Posted job को delete करो (deletePostedJob)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /Accept/:id
+                <p>Candidate को job के लिए accept करो (Accept)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-get">GET</span> /Reject/:id
+                <p>Candidate को job के लिए reject करो (Reject)</p>
+            </div>
+            
+            <div class="route-item">
+                <span class="method method-post">POST</span> /viewCandidate
+                <p>Candidate की full profile देखो (viewCandidate)</p>
+            </div>
+        </div>
+        
+        <!-- Application Flow -->
+        <div class="section" id="flow">
+            <h2>🔄 Application Flow & Architecture</h2>
+            
+            <h3>Server-Side Rendering Flow (EJS)</h3>
+            <div class="flow-diagram">
+┌──────────────────────────────────────────────────────┐
+│  1. Browser → GET/POST Request                       │
+└─────────────────┬──────────────────────────────────┘
+                  │
+                  ▼
+┌──────────────────────────────────────────────────────┐
+│  2. Express Router Matches Route                     │
+│     (Check Session, Middleware)                      │
+└─────────────────┬──────────────────────────────────┘
+                  │
+                  ▼
+┌──────────────────────────────────────────────────────┐
+│  3. Controller Function (jobController.js)           │
+│     - Database Query (MongoDB)                       │
+│     - Business Logic                                 │
+│     - Data Processing                                │
+└─────────────────┬──────────────────────────────────┘
+                  │
+                  ▼
+┌──────────────────────────────────────────────────────┐
+│  4. EJS Template Rendering                           │
+│     - HTML बनता है (Server-side)                     │
+│     - Data को template में inject करो               │
+└─────────────────┬──────────────────────────────────┘
+                  │
+                  ▼
+┌──────────────────────��───────────────────────────────┐
+│  5. Browser को HTML Response मिलता है               │
+│     - Browser render करता है                        │
+│     - User को page दिखता है                         │
+└──────────────────────────────────────────────────────┘
+            </div>
+            
+            <h3>Session-Based Authentication</h3>
+            <div class="highlight-box">
+                <p><strong>How Session Works:</strong></p>
+                <ol>
+                    <li>User login करता है</li>
+                    <li>Server password को bcrypt से verify करता है</li>
+                    <li>Session create होता है और server में store होता है</li>
+                    <li>Browser को session cookie मिलता है</li>
+                    <li>Next request में browser cookie भेजता है</li>
+                    <li>Server session से user data retrieve करता है</li>
+                </ol>
+                <p style="margin-top: 15px;"><strong>Session Data:</strong></p>
+                <code>req.session.email</code> - Recruiter की email<br>
+                <code>req.session.userId</code> - Candidate की email<br>
+                <code>req.session.candidateId</code> - Candidate का MongoDB ID
+            </div>
+            
+            <h3>Data Flow Example: Job Apply करना</h3>
+            <div class="code-block">
+1. Candidate /applyforjob/:id को access करता है
+   
+2. apply() controller execute होता है:
+   - req.session.userId से email निकालो
+   - Candidate की info database से लाओ
+   - Job की info database से लाओ
+   - Check करो कि पहले से apply किया है या नहीं
+   
+3. अगर पहले apply नहीं किया:
+   - नया application document create करो
+   - ApplyModel में save करो
+   
+4. Database में entry:
+   {
+     title: "React Developer",
+     company: "TCS",
+     candidate: "user@gmail.com",
+     jobId: "12345",
+     status: "pending",
+     appliedAt: "2026-04-16"
+   }
+   
+5. User को /dashboard पर redirect करो
+            </div>
+            
+            <h3>Key Features Implementation</h3>
+            
+            <h4>🔍 Search & Filter</h4>
+            <div class="highlight-box">
+                <code>/filter</code> route में POST request करो<br>
+                Mongoose का <code>$regex</code> operator use होता है<br>
+                Case-insensitive matching: <code>{ title: { $regex: searchTerm, $options: 'i' } }</code>
+            </div>
+            
+            <h4>💾 Saved Jobs</h4>
+            <div class="highlight-box">
+                <p>Job को save करने पर SavedModel में copy store होता है</p>
+                <p>Duplicate entries को prevent करने के लिए check होता है</p>
+            </div>
+            
+            <h4>📊 Dashboard Stats</h4>
+            <div class="highlight-box">
+                <p><strong>Candidate के लिए:</strong></p>
+                <ul>
+                    <li>Applied Jobs Count: <code>AppliedJob.countDocuments({ candidate: email })</code></li>
+                    <li>Saved Jobs Count: <code>SavedJob.countDocuments({ candidate: email })</code></li>
+                </ul>
+                <p><strong>Recruiter के लिए:</strong></p>
+                <ul>
+                    <li>Posted Jobs Count: <code>PostedJob.countDocuments({ RecruiterId: email })</code></li>
+                    <li>Total Applicants: <code>AppliedJob.countDocuments({ RecruiterId: email })</code></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Security & Best Practices -->
+        <div class="section">
+            <h2>🔐 Security Features</h2>
+            
+            <div class="highlight-box">
+                <h3>Implemented Security:</h3>
+                <ul>
+                    <li>✅ <strong>Helmet.js</strong> - HTTP headers security</li>
+                    <li>✅ <strong>bcryptjs</strong> - Password hashing</li>
+                    <li>✅ <strong>express-session</strong> - Secure session management</li>
+                    <li>✅ <strong>CORS</strong> - Cross-Origin protection</li>
+                    <li>✅ <strong>Session Timeout</strong> - 30 minutes (maxAge: 30*60*1000)</li>
+                    <li>✅ <strong>Session Secret</strong> - Environment-based</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- How to Run -->
+        <div class="section">
+            <h2>🚀 How to Run Project</h2>
+            
+            <h3>Prerequisites:</h3>
+            <ul>
+                <li>Node.js installed (v14+)</li>
+                <li>MongoDB Atlas account (Cloud DB)</li>
+                <li>Git installed</li>
+            </ul>
+            
+            <h3>Steps:</h3>
+            <div class="code-block">
+# 1. Repository clone करो
+git clone https://github.com/AnujChaudhary5911/Job_Portal.git
+cd Job_Portal
+
+# 2. Dependencies install करो
+npm install
+
+# 3. .env file बनाओ
+echo "MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/jobportal" > .env
+echo "PORT=3100" >> .env
+
+# 4. Server चलाओ
+npm start
+
+# 5. Browser में खोलो
+http://localhost:3100
+
+# Development mode (auto-reload के साथ):
+npm install nodemon
+npx nodemon app.js
+            </div>
+        </div>
+        
+        <!-- Troubleshooting -->
+        <div class="section">
+            <h2>🛠️ Troubleshooting</h2>
+            
+            <table>
+                <tr>
+                    <th>Problem</th>
+                    <th>Solution</th>
+                </tr>
+                <tr>
+                    <td>"Cannot connect to MongoDB"</td>
+                    <td>MONGO_URI check करो, MongoDB Atlas IP whitelist करो</td>
+                </tr>
+                <tr>
+                    <td>"Session not working"</td>
+                    <td>req.session.email या req.session.userId check करो</td>
+                </tr>
+                <tr>
+                    <td>"EJS template not rendering"</td>
+                    <td>views folder path check करो, template syntax सही है कि नहीं</td>
+                </tr>
+                <tr>
+                    <td>"Password not hashing"</td>
+                    <td>bcrypt को सही तरीके से use कर रहे हो? auth.js check करो</td>
+                </tr>
+                <tr>
+                    <td>"Redirects not working"</td>
+                    <td>res.redirect() या res.render() का सही syntax use हो रहा है?</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="btn-container">
+            <h3>📥 Export & Share</h3>
+            <button class="btn btn-primary" onclick="window.print()">
+                🖨️ Print as PDF
+            </button>
+            <button class="btn btn-secondary" onclick="downloadHTML()">
+                📥 Download HTML
+            </button>
+            <a href="https://github.com/Arpit-kumar-Dubey/Job-Portal " target="_blank" class="btn btn-primary">
+                🔗 GitHub Repository
+            </a>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+        <h3>📌 Job Portal - Complete Technical Documentation</h3>
+        <p>Repository: itcompany54-jpg/Job_Portal (Forked from AnujChaudhary5911/Job_Portal)</p>
+        <p>Last Updated: April 16, 2026 | Status: ✅ Production Ready</p>
+        <p style="margin-top: 15px; font-size: 12px;">
+            Created for educational purposes | EJS + Express + MongoDB Stack
+        </p>
+    </div>
+    
+    <script>
+        function downloadHTML() {
+            const element = document.documentElement;
+            const html = element.outerHTML;
+            const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Job_Portal_Documentation.html';
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
