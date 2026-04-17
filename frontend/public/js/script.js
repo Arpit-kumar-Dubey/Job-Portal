@@ -1,4 +1,24 @@
+// Wait for the HTML document to fully load before attaching events
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Setup Print Event
+    const printBtn = document.getElementById('printBtn');
+    if (printBtn) {
+        printBtn.addEventListener('click', () => {
+            window.print();
+        });
+    }
 
+    // 2. Setup Download Event
+    const downloadBtn = document.getElementById('downloadBtn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+            downloadHTML();
+        });
+    }
+});
+
+// The download logic
 function downloadHTML() {
     const element = document.documentElement;
     const html = element.outerHTML;
