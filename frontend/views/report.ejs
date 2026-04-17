@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -321,7 +320,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <div class="navbar">
         <div class="navbar-content">
             <h1>🚀 Job Portal</h1>
@@ -336,13 +334,12 @@
     </div>
     
     <div class="container">
-        <!-- Executive Summary -->
         <div class="section" id="overview">
             <h2>📋 Executive Summary</h2>
             
             <p>
-                यह एक <strong>Full-Stack Job Portal</strong> application है जो <strong>EJS Template Engine</strong> के साथ बना है। 
-                यह platform candidates (job seekers) और recruiters (employers) को एक दूसरे से connect करता है।
+                This is a <strong>Full-Stack Job Portal</strong> application built with the <strong>EJS Template Engine</strong>. 
+                This platform connects candidates (job seekers) and recruiters (employers) with each other.
             </p>
             
             <div class="highlight-box">
@@ -360,32 +357,31 @@
             <div class="feature-grid">
                 <div class="feature-card">
                     <h4>👤 User Roles</h4>
-                    <p>Candidates और Recruiters के लिए अलग accounts</p>
+                    <p>Separate accounts for Candidates and Recruiters</p>
                 </div>
                 <div class="feature-card">
                     <h4>💼 Job Management</h4>
-                    <p>Jobs post करो, edit करो, delete करो</p>
+                    <p>Post, edit, and delete jobs</p>
                 </div>
                 <div class="feature-card">
                     <h4>📝 Applications</h4>
-                    <p>Jobs apply करो, status track करो</p>
+                    <p>Apply for jobs and track status</p>
                 </div>
                 <div class="feature-card">
                     <h4>💾 Save Jobs</h4>
-                    <p>Future के लिए jobs को bookmark करो</p>
+                    <p>Bookmark jobs for the future</p>
                 </div>
                 <div class="feature-card">
                     <h4>🔍 Search & Filter</h4>
-                    <p>Job title से search और filter करो</p>
+                    <p>Search and filter by job title</p>
                 </div>
                 <div class="feature-card">
                     <h4>📊 Dashboard</h4>
-                    <p>Applications, posts और stats देखो</p>
+                    <p>View applications, posts, and stats</p>
                 </div>
             </div>
         </div>
         
-        <!-- Technology Stack -->
         <div class="section" id="tech">
             <h2>🛠️ Technology Stack</h2>
             
@@ -456,12 +452,11 @@ Job_Portal/
             </div>
         </div>
         
-        <!-- Database Models -->
         <div class="section" id="models">
             <h2>🗄️ Database Schema (Collections)</h2>
             
             <h3>1. Candidates Collection</h3>
-            <p>Job seekers का user data store करता है</p>
+            <p>Stores user data of job seekers</p>
             <div class="model-schema">
 {
   email: String,
@@ -483,7 +478,7 @@ Job_Portal/
             </div>
             
             <h3>2. Recruiter Collection</h3>
-            <p>Employers/Recruiters का data store करता है</p>
+            <p>Stores data of Employers/Recruiters</p>
             <div class="model-schema">
 {
   name: String,
@@ -493,7 +488,7 @@ Job_Portal/
             </div>
             
             <h3>3. Posted Jobs Collection</h3>
-            <p>Recruiters द्वारा post किए गए jobs</p>
+            <p>Jobs posted by recruiters</p>
             <div class="model-schema">
 {
   title: String,                    // Job title
@@ -510,7 +505,7 @@ Job_Portal/
             </div>
             
             <h3>4. Applied Jobs Collection</h3>
-            <p>Candidates द्वारा apply किए गए jobs</p>
+            <p>Jobs applied for by candidates</p>
             <div class="model-schema">
 {
   title: String,
@@ -518,18 +513,18 @@ Job_Portal/
   location: String,
   description: String,
   salary: String,
-  RecruiterId: String,              // Recruiter की email
-  candidate: String,                // Candidate की email
-  jobId: String,                    // Job का ID
+  RecruiterId: String,              // Email of the recruiter
+  candidate: String,                // Email of the candidate
+  jobId: String,                    // ID of the job
   status: String,                   // "pending", "Accepted", "Rejected"
-  name: String,                     // Candidate का naam
-  locationCandidate: String,        // Candidate ka location
+  name: String,                     // Name of the candidate
+  locationCandidate: String,        // Location of the candidate
   appliedAt: String                 // Application date
 }
             </div>
             
             <h3>5. Saved Jobs Collection</h3>
-            <p>Candidates द्वारा bookmark किए गए jobs</p>
+            <p>Jobs bookmarked by candidates</p>
             <div class="model-schema">
 {
   title: String,
@@ -537,7 +532,7 @@ Job_Portal/
   location: String,
   description: String,
   salary: String,
-  candidate: String,                // Candidate की email
+  candidate: String,                // Email of the candidate
   jobId: String,
   status: String,
   name: String
@@ -545,7 +540,6 @@ Job_Portal/
             </div>
         </div>
         
-        <!-- Routes & Flow -->
         <div class="section" id="routes">
             <h2>🔗 API Routes & Pages</h2>
             
@@ -558,165 +552,164 @@ Job_Portal/
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /candidate/register
-                <p>Candidate registration form दिखाओ</p>
+                <p>Show candidate registration form</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-post">POST</span> /candidate/register
-                <p>Candidate को register करो (c_register)</p>
+                <p>Register candidate (c_register)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /candidate/login
-                <p>Candidate login form दिखाओ</p>
+                <p>Show candidate login form</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-post">POST</span> /12
-                <p>Candidate को login करो (candidateLogin)</p>
+                <p>Login candidate (candidateLogin)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /recruiter/register
-                <p>Recruiter registration form दिखाओ</p>
+                <p>Show recruiter registration form</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-post">POST</span> /recruiter/register1
-                <p>Recruiter को register करो (recruiterRegister)</p>
+                <p>Register recruiter (recruiterRegister)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /recruiter/login
-                <p>Recruiter login form दिखाओ</p>
+                <p>Show recruiter login form</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-post">POST</span> /recruiter/login1
-                <p>Recruiter को login करो (recruiterLogin)</p>
+                <p>Login recruiter (recruiterLogin)</p>
             </div>
             
             <h3>👤 Candidate Routes</h3>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /dashboard
-                <p>Candidate dashboard (cDashboard) - सभी jobs देखो</p>
+                <p>Candidate dashboard (cDashboard) - View all jobs</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /candidate/view-jobs
-                <p>सभी available jobs देखो (getJobs)</p>
+                <p>View all available jobs (getJobs)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-post">POST</span> /filter
-                <p>Jobs को title से filter करो</p>
+                <p>Filter jobs by title</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /viewpostedJob/:id
-                <p>एक specific job का detail देखो (view)</p>
+                <p>View details of a specific job (view)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /applyforjob/:id
-                <p>किसी job के लिए apply करो (apply)</p>
+                <p>Apply for a job (apply)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /saveJob/:id
-                <p>Job को bookmark/save करो (saveJob)</p>
+                <p>Bookmark/save a job (saveJob)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /3
-                <p>Applied jobs देखो (aplyed)</p>
+                <p>View applied jobs (aplyed)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /savedJobs
-                <p>Saved jobs देखो (savedJobs)</p>
+                <p>View saved jobs (savedJobs)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /candidate/profile
-                <p>अपनी profile देखो (profile)</p>
+                <p>View your profile (profile)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-post">POST</span> /candidate/update
-                <p>Profile को update करो (CandidateUpdate)</p>
+                <p>Update profile (CandidateUpdate)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /deleteAppled/:id
-                <p>एक application को delete करो (deleteApply)</p>
+                <p>Delete an application (deleteApply)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /deleteSaved/:id
-                <p>एक saved job को delete करो (deleteSaved)</p>
+                <p>Delete a saved job (deleteSaved)</p>
             </div>
             
             <h3>💼 Recruiter Routes</h3>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /Rdashboard
-                <p>Recruiter dashboard (Rdashboard) - statistics देखो</p>
+                <p>Recruiter dashboard (Rdashboard) - View statistics</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /recruiter/post-job
-                <p>नई job post करने का form दिखाओ</p>
+                <p>Show form to post a new job</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-post">POST</span> /recruiter/post-job
-                <p>नई job को database में save करो (postJob)</p>
+                <p>Save new job to the database (postJob)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /recruiter/view-posted-jobs
-                <p>अपनी सभी posted jobs देखो (viewPosted)</p>
+                <p>View all your posted jobs (viewPosted)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /recruiter/view-applicants
-                <p>सभी applications देखो (Applicants)</p>
+                <p>View all applications (Applicants)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /EditPostedJob/:id
-                <p>Job को edit करने का form दिखाओ (EditPostedJob)</p>
+                <p>Show form to edit a job (EditPostedJob)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-post">POST</span> /recruiter/updateJob
-                <p>Job को update करो (updateJob)</p>
+                <p>Update a job (updateJob)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /deletePosted/:id
-                <p>Posted job को delete करो (deletePostedJob)</p>
+                <p>Delete a posted job (deletePostedJob)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /Accept/:id
-                <p>Candidate को job के लिए accept करो (Accept)</p>
+                <p>Accept candidate for the job (Accept)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-get">GET</span> /Reject/:id
-                <p>Candidate को job के लिए reject करो (Reject)</p>
+                <p>Reject candidate for the job (Reject)</p>
             </div>
             
             <div class="route-item">
                 <span class="method method-post">POST</span> /viewCandidate
-                <p>Candidate की full profile देखो (viewCandidate)</p>
+                <p>View candidate's full profile (viewCandidate)</p>
             </div>
         </div>
         
-        <!-- Application Flow -->
         <div class="section" id="flow">
             <h2>🔄 Application Flow & Architecture</h2>
             
@@ -743,15 +736,15 @@ Job_Portal/
                   ▼
 ┌──────────────────────────────────────────────────────┐
 │  4. EJS Template Rendering                           │
-│     - HTML बनता है (Server-side)                     │
-│     - Data को template में inject करो               │
+│     - HTML is generated (Server-side)                │
+│     - Inject data into the template                  │
 └─────────────────┬──────────────────────────────────┘
                   │
                   ▼
-┌──────────────────────��───────────────────────────────┐
-│  5. Browser को HTML Response मिलता है               │
-│     - Browser render करता है                        │
-│     - User को page दिखता है                         │
+┌──────────────────────────────────────────────────────┐
+│  5. Browser receives HTML Response                   │
+│     - Browser renders it                             │
+│     - User sees the page                             │
 └──────────────────────────────────────────────────────┘
             </div>
             
@@ -759,34 +752,34 @@ Job_Portal/
             <div class="highlight-box">
                 <p><strong>How Session Works:</strong></p>
                 <ol>
-                    <li>User login करता है</li>
-                    <li>Server password को bcrypt से verify करता है</li>
-                    <li>Session create होता है और server में store होता है</li>
-                    <li>Browser को session cookie मिलता है</li>
-                    <li>Next request में browser cookie भेजता है</li>
-                    <li>Server session से user data retrieve करता है</li>
+                    <li>User logs in</li>
+                    <li>Server verifies password using bcrypt</li>
+                    <li>Session is created and stored on the server</li>
+                    <li>Browser receives session cookie</li>
+                    <li>Browser sends cookie in the next request</li>
+                    <li>Server retrieves user data from session</li>
                 </ol>
                 <p style="margin-top: 15px;"><strong>Session Data:</strong></p>
-                <code>req.session.email</code> - Recruiter की email<br>
-                <code>req.session.userId</code> - Candidate की email<br>
-                <code>req.session.candidateId</code> - Candidate का MongoDB ID
+                <code>req.session.email</code> - Email of the recruiter<br>
+                <code>req.session.userId</code> - Email of the candidate<br>
+                <code>req.session.candidateId</code> - Candidate's MongoDB ID
             </div>
             
-            <h3>Data Flow Example: Job Apply करना</h3>
+            <h3>Data Flow Example: Applying for a Job</h3>
             <div class="code-block">
-1. Candidate /applyforjob/:id को access करता है
+1. Candidate accesses /applyforjob/:id
    
-2. apply() controller execute होता है:
-   - req.session.userId से email निकालो
-   - Candidate की info database से लाओ
-   - Job की info database से लाओ
-   - Check करो कि पहले से apply किया है या नहीं
+2. apply() controller executes:
+   - Extract email from req.session.userId
+   - Fetch Candidate's info from database
+   - Fetch Job's info from database
+   - Check if already applied or not
    
-3. अगर पहले apply नहीं किया:
-   - नया application document create करो
-   - ApplyModel में save करो
+3. If not already applied:
+   - Create a new application document
+   - Save in ApplyModel
    
-4. Database में entry:
+4. Entry in Database:
    {
      title: "React Developer",
      company: "TCS",
@@ -796,32 +789,32 @@ Job_Portal/
      appliedAt: "2026-04-16"
    }
    
-5. User को /dashboard पर redirect करो
+5. Redirect User to /dashboard
             </div>
             
             <h3>Key Features Implementation</h3>
             
             <h4>🔍 Search & Filter</h4>
             <div class="highlight-box">
-                <code>/filter</code> route में POST request करो<br>
-                Mongoose का <code>$regex</code> operator use होता है<br>
+                Make a POST request to the <code>/filter</code> route<br>
+                Mongoose's <code>$regex</code> operator is used<br>
                 Case-insensitive matching: <code>{ title: { $regex: searchTerm, $options: 'i' } }</code>
             </div>
             
             <h4>💾 Saved Jobs</h4>
             <div class="highlight-box">
-                <p>Job को save करने पर SavedModel में copy store होता है</p>
-                <p>Duplicate entries को prevent करने के लिए check होता है</p>
+                <p>When a job is saved, a copy is stored in SavedModel</p>
+                <p>Checks are made to prevent duplicate entries</p>
             </div>
             
             <h4>📊 Dashboard Stats</h4>
             <div class="highlight-box">
-                <p><strong>Candidate के लिए:</strong></p>
+                <p><strong>For Candidate:</strong></p>
                 <ul>
                     <li>Applied Jobs Count: <code>AppliedJob.countDocuments({ candidate: email })</code></li>
                     <li>Saved Jobs Count: <code>SavedJob.countDocuments({ candidate: email })</code></li>
                 </ul>
-                <p><strong>Recruiter के लिए:</strong></p>
+                <p><strong>For Recruiter:</strong></p>
                 <ul>
                     <li>Posted Jobs Count: <code>PostedJob.countDocuments({ RecruiterId: email })</code></li>
                     <li>Total Applicants: <code>AppliedJob.countDocuments({ RecruiterId: email })</code></li>
@@ -829,7 +822,6 @@ Job_Portal/
             </div>
         </div>
         
-        <!-- Security & Best Practices -->
         <div class="section">
             <h2>🔐 Security Features</h2>
             
@@ -846,7 +838,6 @@ Job_Portal/
             </div>
         </div>
         
-        <!-- How to Run -->
         <div class="section">
             <h2>🚀 How to Run Project</h2>
             
@@ -859,30 +850,29 @@ Job_Portal/
             
             <h3>Steps:</h3>
             <div class="code-block">
-# 1. Repository clone करो
+# 1. Clone the repository
 git clone https://github.com/AnujChaudhary5911/Job_Portal.git
 cd Job_Portal
 
-# 2. Dependencies install करो
+# 2. Install dependencies
 npm install
 
-# 3. .env file बनाओ
+# 3. Create a .env file
 echo "MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/jobportal" > .env
 echo "PORT=3100" >> .env
 
-# 4. Server चलाओ
+# 4. Start the server
 npm start
 
-# 5. Browser में खोलो
+# 5. Open in browser
 http://localhost:3100
 
-# Development mode (auto-reload के साथ):
+# Development mode (with auto-reload):
 npm install nodemon
 npx nodemon app.js
             </div>
         </div>
         
-        <!-- Troubleshooting -->
         <div class="section">
             <h2>🛠️ Troubleshooting</h2>
             
@@ -893,28 +883,27 @@ npx nodemon app.js
                 </tr>
                 <tr>
                     <td>"Cannot connect to MongoDB"</td>
-                    <td>MONGO_URI check करो, MongoDB Atlas IP whitelist करो</td>
+                    <td>Check MONGO_URI, whitelist MongoDB Atlas IP</td>
                 </tr>
                 <tr>
                     <td>"Session not working"</td>
-                    <td>req.session.email या req.session.userId check करो</td>
+                    <td>Check req.session.email or req.session.userId</td>
                 </tr>
                 <tr>
                     <td>"EJS template not rendering"</td>
-                    <td>views folder path check करो, template syntax सही है कि नहीं</td>
+                    <td>Check views folder path, ensure template syntax is correct</td>
                 </tr>
                 <tr>
                     <td>"Password not hashing"</td>
-                    <td>bcrypt को सही तरीके से use कर रहे हो? auth.js check करो</td>
+                    <td>Are you using bcrypt correctly? Check auth.js</td>
                 </tr>
                 <tr>
                     <td>"Redirects not working"</td>
-                    <td>res.redirect() या res.render() का सही syntax use हो रहा है?</td>
+                    <td>Is the correct syntax for res.redirect() or res.render() being used?</td>
                 </tr>
             </table>
         </div>
         
-        <!-- Action Buttons -->
         <div class="btn-container">
             <h3>📥 Export & Share</h3>
             <button class="btn btn-primary" onclick="window.print()">
@@ -923,32 +912,19 @@ npx nodemon app.js
             <button class="btn btn-secondary" onclick="downloadHTML()">
                 📥 Download HTML
             </button>
-            <a href="https://github.com/Arpit-kumar-Dubey/Job-Portal " target="_blank" class="btn btn-primary">
+            <a href="https://github.com/Arpit-kumar-Dubey/Job-Portal" target="_blank" class="btn btn-primary">
                 🔗 GitHub Repository
             </a>
         </div>
     </div>
     
-    <!-- Footer -->
     <div class="footer">
         <h3>📌 Job Portal - Complete Technical Documentation</h3>
         <p style="margin-top: 15px; font-size: 12px;">
             Created for educational purposes | EJS + Express + MongoDB Stack
         </p>
     </div>
-    
-    <script>
-        function downloadHTML() {
-            const element = document.documentElement;
-            const html = element.outerHTML;
-            const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'Job_Portal_Documentation.html';
-            link.click();
-            URL.revokeObjectURL(url);
-        }
-    </script>
+
+    <script src="/script.js"></script>
 </body>
 </html>
